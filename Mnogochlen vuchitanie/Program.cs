@@ -4,7 +4,8 @@
 // f(x) =  1*x^0 + 2*x^1 + 0*x^2 + 4*x^3 + 5*x^4+ 16*x^5
 // g(x) =  10*x^0 + 11*x^1 + 4*x^2 
 
-int[] Sum(int[] f, int[] g)
+int[] vuch(int[] f, int[] g)
+
 {
     int powF = f.Length;
     int powG = g.Length;
@@ -22,7 +23,7 @@ int[] Sum(int[] f, int[] g)
 
     for (int i = 0; i < resultMin; i++)
     {
-        result[i] = f[i] + g[i];
+        result[i] = f[i] - g[i];
     }
 
     for (int i = resultMin; i < resultMax; i++)
@@ -48,23 +49,17 @@ string Print(int[] f)
         if (i == 1) { output += $"{t}x"; }
         if (i == 0) { output += $"{t}"; }
         if (i != 1 && i != 0 && f[i] != 0) { output += $"{t}x{pows[i]}"; }
-        //if (flag && f[i] != 0 && i < f.Length - 1) output += " + ";
     }
-
     return output;
 }
-
-
-//          0  1  2  3  4  5  6  7  ......... N
-
-int[] f = { 1, 0, 0, 0, -9, -6 };
-//          1* x^0 + 2*x^1 + 0*x^2 + 4*x^3 + 5*x^4 + 6*x^5
-// 
-
+int[] f = { 1, 3, 5, 7, 12, -9, -6, -23 };
 int[] g = { 0, 1, -2, -5, 4, 0, 7, 3 };
+
+Console.Write("f = ");
 Console.WriteLine(Print(f));
+Console.Write("g = ");
 Console.WriteLine(Print(g));
-int[] s = Sum(f, g);
+int[] s = vuch(f, g);
+Console.Write("f-g = ");
 Console.WriteLine(Print(s));
-//f(x) = a0*x^0 + a1*x^1 + a2*x^2 + a3*x^3 + a4*x^4 + ....+ aN*x^N
 System.Console.WriteLine();
